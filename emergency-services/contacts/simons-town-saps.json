@@ -2,6 +2,7 @@
   "name": "Simon's Town SAPS",
   "category": "Police",
   "phone": "021 786 8646",
+  "areas": ["Simon's Town"],
   "coordinates": { "lat": -34.1932110, "lng": 18.4364480 },
   "mapLink": "https://goo.gl/maps/8kGnuYUhLCEvdSU28?g_st=ac"
 }

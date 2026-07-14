@@ -1,5 +1,6 @@
 {
   "name": "Fire & Rescue Services (Simon's Town, Lakeside, Fish Hoek, Kommetjie)",
   "category": "Fire",
-  "phone": "021 480 7700"
+  "phone": "021 480 7700",
+  "areas": ["Simon's Town", "Lakeside", "Fish Hoek", "Kommetjie"]
 }
