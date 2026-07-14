@@ -1,27 +1,25 @@
 :root {
-  --bg: #f4f1ea;
+  --bg: #eef4f8;
   --surface: #ffffff;
-  --text: #14261e;
-  --muted: #4b6156;
-  --brand: #123a2c;
-  --brand-light: #38825c;
+  --text: #142433;
+  --muted: #4d6b7a;
+  --brand: #0f3a5c;
+  --brand-light: #2e86c9;
   --accent: #d99a2b;
-  --border: #e2ddd0;
+  --border: #dbe6ee;
   color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0e1e17;
-    --surface: #16302494;
-    --surface: #16302a;
-    --text: #eef2ef;
-    --muted: #a8bdb2;
-    --brand: #f7c760;
-    --brand-light: #7fc99e;
-    --accent: #f7c760;
-    --border: #24413590;
-    --border: #244135;
+    --bg: #0b1720;
+    --surface: #142a3b;
+    --text: #eaf1f6;
+    --muted: #9db3c1;
+    --brand: #4fa3e3;
+    --brand-light: #6ec1f0;
+    --accent: #6ec1f0;
+    --border: #24384a;
   }
 }
 
@@ -53,7 +51,7 @@ body {
 
 header.hero {
   width: 100%;
-  background: linear-gradient(180deg, var(--brand) 0%, #0d2b21 100%);
+  background: linear-gradient(180deg, var(--brand) 0%, #0a2438 100%);
   color: #fdf8ee;
   padding: 48px 20px 32px;
   display: flex;
@@ -122,7 +120,7 @@ h2.section-title {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(56, 130, 92, 0.15);
+  background: rgba(46, 134, 201, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,7 +173,7 @@ h2.section-title {
   width: 100%;
   border: none;
   background: var(--brand-light);
-  color: #0d2b21;
+  color: #0a2438;
   font-weight: 600;
   padding: 12px;
   border-radius: 12px;
