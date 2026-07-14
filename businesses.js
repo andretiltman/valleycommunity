@@ -46,10 +46,18 @@ function renderBusinessSummary(item) {
 async function loadBusinesses() {
   const panel = document.getElementById("businesses-panel");
   const heading = document.getElementById("businesses-heading");
-  const areaFilter = new URLSearchParams(window.location.search).get("area");
+  const params = new URLSearchParams(window.location.search);
+  const areaFilter = params.get("area");
+  const categoryFilter = params.get("category");
 
-  if (areaFilter && heading) {
-    heading.textContent = `Businesses in ${areaFilter}`;
+  if (heading) {
+    if (categoryFilter && areaFilter) {
+      heading.textContent = `${categoryFilter} in ${areaFilter}`;
+    } else if (categoryFilter) {
+      heading.textContent = categoryFilter;
+    } else if (areaFilter) {
+      heading.textContent = `Businesses in ${areaFilter}`;
+    }
   }
 
   panel.innerHTML = '<p class="list-status">Loading&hellip;</p>';
@@ -61,16 +69,21 @@ async function loadBusinesses() {
 
     let filtered = items;
     if (areaFilter) {
-      filtered = items.filter(
+      filtered = filtered.filter(
         (item) => item.area && item.area.toLowerCase() === areaFilter.toLowerCase()
+      );
+    }
+    if (categoryFilter) {
+      filtered = filtered.filter(
+        (item) => item.category && item.category.toLowerCase() === categoryFilter.toLowerCase()
       );
     }
 
     const sorted = filtered.slice().sort((a, b) => a.name.localeCompare(b.name));
 
     if (!sorted.length) {
-      panel.innerHTML = areaFilter
-        ? `<p class="list-status">No businesses listed yet for ${escapeHtml(areaFilter)}.</p>`
+      panel.innerHTML = areaFilter || categoryFilter
+        ? `<p class="list-status">No businesses listed yet for ${escapeHtml(categoryFilter || areaFilter)}.</p>`
         : '<p class="list-status">No businesses listed yet.</p>';
     } else {
       sorted.forEach((item) => panel.appendChild(renderBusinessSummary(item)));
