@@ -1,0 +1,13 @@
+{
+  "name": "Sandi's Bistro",
+  "category": "Coffee Shop",
+  "description": "Coffee shop run by Sandra Meredith, situated in Valyland Center, a shopping center in Fish Hoek.",
+  "contact": {
+    "phone": "+27 82 824 1421",
+    "email": "sandimerri@gmail.com"
+  },
+  "address": "Valyland Center, Fish Hoek",
+  "area": "Fish Hoek",
+  "mapLink": "https://maps.app.goo.gl/utgXM11PAE6PQTna9",
+  "hours": "Mon-Fri 07:30-16:30 · Sat 07:30-13:00 · Sun 08:00-13:00"
+}

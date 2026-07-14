@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Business Directory · Valley Community</title>
-  <meta name="description" content="Local business listings for the Valley Community." />
+  <title>Areas · Valley Community</title>
+  <meta name="description" content="Browse local businesses by area for the Valley Community." />
 
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#0f3a5c" />
@@ -23,37 +23,26 @@
 <body>
   <header class="hero">
     <img src="icons/icon-192.png" alt="Valley Community" />
-    <h1>Business Directory</h1>
-    <p>Local business listings for the Valley</p>
+    <h1>Areas</h1>
+    <p>Browse businesses by area</p>
   </header>
 
   <div class="wrap">
     <section>
-      <a class="card" href="index.html">
+      <a class="card" href="businesses.html">
         <span class="card-icon">⬅️</span>
         <span class="card-body">
-          <strong>Back to home</strong>
+          <strong>Back to businesses</strong>
         </span>
       </a>
     </section>
 
     <section>
-      <a class="card" href="areas.html">
-        <span class="card-icon">🗺️</span>
-        <span class="card-body">
-          <strong>Browse by Area</strong>
-          <span>Find businesses near you</span>
-        </span>
-        <span class="card-arrow">›</span>
-      </a>
-    </section>
-
-    <section>
-      <h2 class="section-title" id="businesses-heading">Businesses</h2>
-      <div class="panel" id="businesses-panel"></div>
+      <h2 class="section-title">Areas</h2>
+      <div class="panel" id="areas-panel"></div>
     </section>
   </div>
 
-  <script src="businesses.js"></script>
+  <script src="areas.js"></script>
 </body>
 </html>
