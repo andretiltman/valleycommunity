@@ -42,6 +42,39 @@ function renderEmergencyContact(item) {
   return el;
 }
 
+function slugifyArea(name) {
+  return name
+    .toLowerCase()
+    .replace(/'/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function loadAreaBanner(area) {
+  const wrapper = document.getElementById("area-banner");
+  const img = document.getElementById("area-banner-img");
+  if (!wrapper || !img || !area) return;
+
+  const slug = slugifyArea(area);
+  const extensions = ["jpg", "jpeg", "png", "webp"];
+  let i = 0;
+
+  img.alt = `${area} banner`;
+  img.onload = () => {
+    wrapper.hidden = false;
+  };
+  img.onerror = () => {
+    if (i < extensions.length) {
+      img.src = `areas/banners/${slug}.${extensions[i]}`;
+      i++;
+    } else {
+      wrapper.hidden = true;
+    }
+  };
+  img.src = `areas/banners/${slug}.${extensions[i]}`;
+  i++;
+}
+
 async function fetchListings(baseDir) {
   const manifestResponse = await fetch(`${baseDir}/index.json`);
   if (!manifestResponse.ok) throw new Error("manifest fetch failed");
@@ -65,6 +98,7 @@ async function loadArea() {
 
   if (title) title.textContent = area || "Area";
   document.title = `${area || "Area"} · Valley Community`;
+  loadAreaBanner(area);
 
   businessesPanel.innerHTML = '<p class="list-status">Loading&hellip;</p>';
   emergencyPanel.innerHTML = '<p class="list-status">Loading&hellip;</p>';
