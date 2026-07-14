@@ -23,41 +23,22 @@ async function fetchBusinesses() {
     files.map(async (file) => {
       const response = await fetch(`businesses/listings/${file}.json`);
       if (!response.ok) throw new Error(`${file} fetch failed`);
-      return response.json();
+      const data = await response.json();
+      return { ...data, _id: file };
     })
   );
 }
 
-function renderBusiness(item) {
-  const el = document.createElement("div");
+function renderBusinessSummary(item) {
+  const el = document.createElement("a");
   el.className = "list-item";
-
-  const links = [];
-  if (item.contact?.phone) {
-    links.push(
-      `<a href="tel:${escapeHtml(item.contact.phone.replace(/\s+/g, ""))}">${escapeHtml(item.contact.phone)}</a>`
-    );
-  }
-  if (item.contact?.whatsapp) {
-    links.push(`<a href="${escapeHtml(item.contact.whatsapp)}" target="_blank" rel="noopener">WhatsApp</a>`);
-  }
-  if (item.contact?.email) {
-    links.push(`<a href="mailto:${escapeHtml(item.contact.email)}">Email</a>`);
-  }
-  if (item.website) {
-    links.push(`<a href="${escapeHtml(item.website)}" target="_blank" rel="noopener">Website</a>`);
-  }
-  if (item.mapLink) {
-    links.push(`<a href="${escapeHtml(item.mapLink)}" target="_blank" rel="noopener">View map</a>`);
-  }
+  el.href = `business.html?id=${encodeURIComponent(item._id)}`;
 
   el.innerHTML = `
     <strong>${escapeHtml(item.name)}</strong>
     <span class="category">${escapeHtml(item.category || "")}</span>
     ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
     ${item.address ? `<p>${escapeHtml(item.address)}</p>` : ""}
-    ${item.hours ? `<p>${escapeHtml(item.hours)}</p>` : ""}
-    ${links.length ? `<p>${links.join(" &middot; ")}</p>` : ""}
   `;
   return el;
 }
@@ -92,7 +73,7 @@ async function loadBusinesses() {
         ? `<p class="list-status">No businesses listed yet for ${escapeHtml(areaFilter)}.</p>`
         : '<p class="list-status">No businesses listed yet.</p>';
     } else {
-      sorted.forEach((item) => panel.appendChild(renderBusiness(item)));
+      sorted.forEach((item) => panel.appendChild(renderBusinessSummary(item)));
     }
   } catch (err) {
     panel.innerHTML = '<p class="list-status">Couldn’t load this list. Try again later.</p>';
