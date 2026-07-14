@@ -1,0 +1,11 @@
+{
+  "name": "PaintIT",
+  "contactPerson": "Glen Wicks",
+  "category": "Painting & Handyman",
+  "description": "Renovations, painting, waterproofing, powerwashing and roof cleaning/painting.",
+  "contact": {
+    "phone": "064 902 9277",
+    "email": "glenwicks87@gmail.com"
+  },
+  "tags": ["Renovations", "Painting", "Waterproofing", "Powerwashing", "Roof Cleaning"]
+}
