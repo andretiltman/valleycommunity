@@ -29,6 +29,30 @@
 
   <div class="wrap">
     <section>
+      <h2 class="section-title">Local Directory</h2>
+      <div class="card-list">
+        <a class="card" href="businesses.html">
+          <span class="card-icon">🏪</span>
+          <span class="card-body">
+            <strong>Businesses</strong>
+            <span>Local business listings</span>
+          </span>
+          <span class="card-arrow">›</span>
+        </a>
+
+        <button class="card toggle-card" type="button" id="emergency-toggle" aria-expanded="false" aria-controls="emergency-panel">
+          <span class="card-icon">🚨</span>
+          <span class="card-body">
+            <strong>Emergency Services</strong>
+            <span>Police, fire &amp; medical contacts</span>
+          </span>
+          <span class="card-arrow">›</span>
+        </button>
+        <div class="panel" id="emergency-panel" hidden></div>
+      </div>
+    </section>
+
+    <section>
       <h2 class="section-title">WhatsApp Groups</h2>
       <div class="card-list">
         <a class="card" href="https://chat.whatsapp.com/CIU1zbOdx4i7CuKqRQPb2a" target="_blank" rel="noopener">
@@ -55,31 +79,6 @@
           </span>
           <span class="card-arrow">›</span>
         </a>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="section-title">Local Directory</h2>
-      <div class="card-list">
-        <button class="card toggle-card" type="button" id="businesses-toggle" aria-expanded="false" aria-controls="businesses-panel">
-          <span class="card-icon">🏪</span>
-          <span class="card-body">
-            <strong>Businesses</strong>
-            <span>Local business listings</span>
-          </span>
-          <span class="card-arrow">›</span>
-        </button>
-        <div class="panel" id="businesses-panel" hidden></div>
-
-        <button class="card toggle-card" type="button" id="emergency-toggle" aria-expanded="false" aria-controls="emergency-panel">
-          <span class="card-icon">🚨</span>
-          <span class="card-body">
-            <strong>Emergency Services</strong>
-            <span>Police, fire &amp; medical contacts</span>
-          </span>
-          <span class="card-arrow">›</span>
-        </button>
-        <div class="panel" id="emergency-panel" hidden></div>
       </div>
     </section>
 
