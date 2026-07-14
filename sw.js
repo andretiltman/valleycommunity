@@ -1,15 +1,17 @@
-const CACHE_NAME = "valley-community-v4";
+const CACHE_NAME = "valley-community-v5";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./businesses.html",
   "./emergency-services.html",
   "./areas.html",
+  "./area.html",
   "./styles.css",
   "./app.js",
   "./businesses.js",
   "./emergency-services.js",
   "./areas.js",
+  "./area.js",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",

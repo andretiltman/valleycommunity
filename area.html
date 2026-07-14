@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Emergency Services · Valley Community</title>
-  <meta name="description" content="Police, fire, medical and municipal emergency contacts for the Valley Community." />
+  <title>Area · Valley Community</title>
+  <meta name="description" content="Businesses and emergency services for an area in the Valley Community." />
 
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#0f3a5c" />
@@ -23,37 +23,31 @@
 <body>
   <header class="hero">
     <img src="icons/icon-192.png" alt="Valley Community" />
-    <h1>Emergency Services</h1>
-    <p>Police, fire &amp; medical contacts for the Valley</p>
+    <h1 id="area-title">Area</h1>
+    <p>Businesses &amp; emergency services</p>
   </header>
 
   <div class="wrap">
     <section>
-      <a class="card" href="index.html">
+      <a class="card" href="areas.html">
         <span class="card-icon">⬅️</span>
         <span class="card-body">
-          <strong>Back to home</strong>
+          <strong>Back to areas</strong>
         </span>
       </a>
     </section>
 
     <section>
-      <a class="card" href="areas.html">
-        <span class="card-icon">🗺️</span>
-        <span class="card-body">
-          <strong>Browse by Area</strong>
-          <span>Find services near you</span>
-        </span>
-        <span class="card-arrow">›</span>
-      </a>
+      <h2 class="section-title">Businesses</h2>
+      <div class="panel" id="area-businesses-panel"></div>
     </section>
 
     <section>
-      <h2 class="section-title" id="emergency-heading">Emergency Contacts</h2>
-      <div class="panel" id="emergency-panel"></div>
+      <h2 class="section-title">Emergency Contacts</h2>
+      <div class="panel" id="area-emergency-panel"></div>
     </section>
   </div>
 
-  <script src="emergency-services.js"></script>
+  <script src="area.js"></script>
 </body>
 </html>
