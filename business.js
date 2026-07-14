@@ -93,6 +93,25 @@ function loadBusinessLogo(id, name) {
   tryNext();
 }
 
+async function loadBusinessEvents(id) {
+  const section = document.getElementById("business-events-section");
+  const panel = document.getElementById("business-events-panel");
+  if (!section || !panel) return;
+
+  try {
+    const events = (await fetchEvents()).filter(
+      (event) => event.businessId === id && isEventActive(event)
+    );
+    if (!events.length) return;
+
+    panel.innerHTML = "";
+    events.forEach((event) => panel.appendChild(renderEventImage(event)));
+    section.hidden = false;
+  } catch (err) {
+    // No events manifest, or it failed to load — just leave the section hidden.
+  }
+}
+
 async function loadBusiness() {
   const id = new URLSearchParams(window.location.search).get("id");
   const title = document.getElementById("business-title");
@@ -119,6 +138,7 @@ async function loadBusiness() {
     panel.appendChild(renderBusiness(item));
     renderQrCode(window.location.href);
     loadBusinessLogo(id, item.name);
+    loadBusinessEvents(id);
   } catch (err) {
     panel.innerHTML = '<p class="list-status">Couldn’t load this business. Try again later.</p>';
   }
