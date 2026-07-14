@@ -90,6 +90,12 @@ function renderEmergencyContact(item) {
   return el;
 }
 
+const CATEGORY_GROUP_LABELS = {
+  Police: "Police Stations",
+  Fire: "Fire Stations",
+  Ambulance: "Ambulance & Medical",
+};
+
 const DIRECTORIES = [
   {
     toggleId: "businesses-toggle",
@@ -106,6 +112,8 @@ const DIRECTORIES = [
     base: "emergency-services/contacts/",
     render: renderEmergencyContact,
     emptyText: "No emergency contacts listed yet.",
+    groupBy: "category",
+    groupOrder: ["Police", "Fire", "Ambulance"],
   },
 ];
 
@@ -147,13 +155,37 @@ function setupDirectory(config) {
 
       panel.innerHTML = "";
 
-      if (!items.length) {
+      const sorted = items.slice().sort((a, b) => a.name.localeCompare(b.name));
+
+      if (!sorted.length) {
         panel.innerHTML = `<p class="list-status">${config.emptyText}</p>`;
+      } else if (config.groupBy) {
+        const groups = new Map();
+        sorted.forEach((item) => {
+          const key = item[config.groupBy] || "Other";
+          if (!groups.has(key)) groups.set(key, []);
+          groups.get(key).push(item);
+        });
+
+        const order = config.groupOrder || [];
+        const keys = [...groups.keys()].sort((a, b) => {
+          const ai = order.indexOf(a);
+          const bi = order.indexOf(b);
+          if (ai === -1 && bi === -1) return a.localeCompare(b);
+          if (ai === -1) return 1;
+          if (bi === -1) return -1;
+          return ai - bi;
+        });
+
+        keys.forEach((key) => {
+          const heading = document.createElement("h4");
+          heading.className = "list-group-heading";
+          heading.textContent = CATEGORY_GROUP_LABELS[key] || key;
+          panel.appendChild(heading);
+          groups.get(key).forEach((item) => panel.appendChild(config.render(item)));
+        });
       } else {
-        items
-          .slice()
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .forEach((item) => panel.appendChild(config.render(item)));
+        sorted.forEach((item) => panel.appendChild(config.render(item)));
       }
 
       loaded = true;

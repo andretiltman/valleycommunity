@@ -213,6 +213,19 @@ button.toggle-card {
   font-weight: 600;
 }
 
+.list-group-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin: 12px 0 -2px;
+}
+
+.list-group-heading:first-child {
+  margin-top: 0;
+}
+
 .list-status {
   font-size: 0.85rem;
   color: var(--muted);
