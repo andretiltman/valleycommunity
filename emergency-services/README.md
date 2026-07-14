@@ -27,4 +27,5 @@ doesn't apply.
 1. Copy [`contacts/_template.json`](./contacts/_template.json).
 2. Rename it to match the service name (lowercase, hyphens instead of spaces).
 3. Fill in the details and remove any fields you don't need.
-4. Open a pull request.
+4. Add the file name (without `.json`) to [`contacts/index.json`](./contacts/index.json).
+5. Open a pull request.

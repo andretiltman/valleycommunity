@@ -32,4 +32,5 @@ doesn't apply.
 1. Copy [`listings/_template.json`](./listings/_template.json).
 2. Rename it to match the business name (lowercase, hyphens instead of spaces).
 3. Fill in the details and remove any fields you don't need.
-4. Open a pull request.
+4. Add the file name (without `.json`) to [`listings/index.json`](./listings/index.json).
+5. Open a pull request.

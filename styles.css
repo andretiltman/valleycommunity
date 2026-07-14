@@ -154,6 +154,72 @@ h2.section-title {
   pointer-events: none;
 }
 
+button.toggle-card {
+  width: 100%;
+  font: inherit;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.toggle-card .card-arrow {
+  transition: transform 0.15s ease;
+}
+
+.toggle-card[aria-expanded="true"] .card-arrow {
+  transform: rotate(90deg);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: -2px;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.list-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.list-item strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.list-item .category {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--brand-light);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.list-item p {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.list-item a {
+  color: var(--brand-light);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.list-status {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 4px 2px;
+  margin: 0;
+}
+
 #install-banner {
   display: none;
   margin-top: 24px;
