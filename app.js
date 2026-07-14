@@ -49,33 +49,6 @@ function escapeHtml(value) {
   })[char]);
 }
 
-function renderBusiness(item) {
-  const el = document.createElement("div");
-  el.className = "list-item";
-
-  const links = [];
-  if (item.contact?.phone) {
-    links.push(
-      `<a href="tel:${escapeHtml(item.contact.phone.replace(/\s+/g, ""))}">${escapeHtml(item.contact.phone)}</a>`
-    );
-  }
-  if (item.contact?.whatsapp) {
-    links.push(`<a href="${escapeHtml(item.contact.whatsapp)}" target="_blank" rel="noopener">WhatsApp</a>`);
-  }
-  if (item.contact?.email) {
-    links.push(`<a href="mailto:${escapeHtml(item.contact.email)}">Email</a>`);
-  }
-
-  el.innerHTML = `
-    <strong>${escapeHtml(item.name)}</strong>
-    <span class="category">${escapeHtml(item.category || "")}</span>
-    ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
-    ${item.address ? `<p>${escapeHtml(item.address)}</p>` : ""}
-    ${links.length ? `<p>${links.join(" &middot; ")}</p>` : ""}
-  `;
-  return el;
-}
-
 function renderEmergencyContact(item) {
   const el = document.createElement("div");
   el.className = "list-item";
@@ -97,14 +70,6 @@ const CATEGORY_GROUP_LABELS = {
 };
 
 const DIRECTORIES = [
-  {
-    toggleId: "businesses-toggle",
-    panelId: "businesses-panel",
-    manifest: "businesses/listings/index.json",
-    base: "businesses/listings/",
-    render: renderBusiness,
-    emptyText: "No businesses listed yet.",
-  },
   {
     toggleId: "emergency-toggle",
     panelId: "emergency-panel",
