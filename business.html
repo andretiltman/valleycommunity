@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Business · Valley Community</title>
+  <meta name="description" content="Business details for the Valley Community." />
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0f3a5c" />
+
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Valley" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <a class="hero-icon" href="index.html"><img src="icons/icon-192.png" alt="Valley Community" /></a>
+    <h1 id="business-title">Business</h1>
+    <p id="business-subtitle">Business details</p>
+  </header>
+
+  <div class="wrap">
+    <section>
+      <a class="card" href="businesses.html">
+        <span class="card-icon">⬅️</span>
+        <span class="card-body">
+          <strong>Back to businesses</strong>
+        </span>
+      </a>
+    </section>
+
+    <section>
+      <div class="panel" id="business-panel"></div>
+    </section>
+
+    <section id="business-qr-section" hidden>
+      <h2 class="section-title">Scan to Share</h2>
+      <div class="panel">
+        <div class="qr-card" id="business-qr"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="vendor/qrcodegen.js"></script>
+  <script src="business.js"></script>
+</body>
+</html>
