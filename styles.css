@@ -206,6 +206,21 @@ a.list-item:active {
   font-weight: 600;
 }
 
+.qr-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.qr-card svg {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+}
+
 .list-group-heading {
   font-size: 0.8rem;
   font-weight: 700;

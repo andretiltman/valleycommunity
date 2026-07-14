@@ -58,6 +58,18 @@ function renderBusiness(item) {
   return el;
 }
 
+function renderQrCode(url) {
+  const section = document.getElementById("business-qr-section");
+  const container = document.getElementById("business-qr");
+  if (!section || !container || typeof qrcodegen === "undefined") return;
+
+  const qr = qrcodegen.QrCode.encodeText(url, qrcodegen.QrCode.Ecc.MEDIUM);
+  const svg = qr.toSvgString(4).replace(/^[\s\S]*?(<svg)/, "$1");
+
+  container.innerHTML = svg;
+  section.hidden = false;
+}
+
 async function loadBusiness() {
   const id = new URLSearchParams(window.location.search).get("id");
   const title = document.getElementById("business-title");
@@ -82,6 +94,7 @@ async function loadBusiness() {
 
     panel.innerHTML = "";
     panel.appendChild(renderBusiness(item));
+    renderQrCode(window.location.href);
   } catch (err) {
     panel.innerHTML = '<p class="list-status">Couldn’t load this business. Try again later.</p>';
   }

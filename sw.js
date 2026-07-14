@@ -1,4 +1,4 @@
-const CACHE_NAME = "valley-community-v6";
+const CACHE_NAME = "valley-community-v7";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -14,6 +14,7 @@ const APP_SHELL = [
   "./emergency-services.js",
   "./areas.js",
   "./area.js",
+  "./vendor/qrcodegen.js",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
