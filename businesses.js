@@ -14,6 +14,20 @@ function escapeHtml(value) {
   })[char]);
 }
 
+async function fetchBusinesses() {
+  const manifestResponse = await fetch("businesses/listings/index.json");
+  if (!manifestResponse.ok) throw new Error("manifest fetch failed");
+  const files = await manifestResponse.json();
+
+  return Promise.all(
+    files.map(async (file) => {
+      const response = await fetch(`businesses/listings/${file}.json`);
+      if (!response.ok) throw new Error(`${file} fetch failed`);
+      return response.json();
+    })
+  );
+}
+
 function renderBusiness(item) {
   const el = document.createElement("div");
   el.className = "list-item";
@@ -30,12 +44,19 @@ function renderBusiness(item) {
   if (item.contact?.email) {
     links.push(`<a href="mailto:${escapeHtml(item.contact.email)}">Email</a>`);
   }
+  if (item.website) {
+    links.push(`<a href="${escapeHtml(item.website)}" target="_blank" rel="noopener">Website</a>`);
+  }
+  if (item.mapLink) {
+    links.push(`<a href="${escapeHtml(item.mapLink)}" target="_blank" rel="noopener">View map</a>`);
+  }
 
   el.innerHTML = `
     <strong>${escapeHtml(item.name)}</strong>
     <span class="category">${escapeHtml(item.category || "")}</span>
     ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
     ${item.address ? `<p>${escapeHtml(item.address)}</p>` : ""}
+    ${item.hours ? `<p>${escapeHtml(item.hours)}</p>` : ""}
     ${links.length ? `<p>${links.join(" &middot; ")}</p>` : ""}
   `;
   return el;
@@ -43,27 +64,33 @@ function renderBusiness(item) {
 
 async function loadBusinesses() {
   const panel = document.getElementById("businesses-panel");
+  const heading = document.getElementById("businesses-heading");
+  const areaFilter = new URLSearchParams(window.location.search).get("area");
+
+  if (areaFilter && heading) {
+    heading.textContent = `Businesses in ${areaFilter}`;
+  }
+
   panel.innerHTML = '<p class="list-status">Loading&hellip;</p>';
 
   try {
-    const manifestResponse = await fetch("businesses/listings/index.json");
-    if (!manifestResponse.ok) throw new Error("manifest fetch failed");
-    const files = await manifestResponse.json();
-
-    const items = await Promise.all(
-      files.map(async (file) => {
-        const response = await fetch(`businesses/listings/${file}.json`);
-        if (!response.ok) throw new Error(`${file} fetch failed`);
-        return response.json();
-      })
-    );
+    const items = await fetchBusinesses();
 
     panel.innerHTML = "";
 
-    const sorted = items.slice().sort((a, b) => a.name.localeCompare(b.name));
+    let filtered = items;
+    if (areaFilter) {
+      filtered = items.filter(
+        (item) => item.area && item.area.toLowerCase() === areaFilter.toLowerCase()
+      );
+    }
+
+    const sorted = filtered.slice().sort((a, b) => a.name.localeCompare(b.name));
 
     if (!sorted.length) {
-      panel.innerHTML = '<p class="list-status">No businesses listed yet.</p>';
+      panel.innerHTML = areaFilter
+        ? `<p class="list-status">No businesses listed yet for ${escapeHtml(areaFilter)}.</p>`
+        : '<p class="list-status">No businesses listed yet.</p>';
     } else {
       sorted.forEach((item) => panel.appendChild(renderBusiness(item)));
     }
