@@ -47,9 +47,10 @@ const CATEGORY_GROUP_LABELS = {
   Fire: "Fire Stations",
   Ambulance: "Ambulance & Medical",
   Electricity: "Electricity",
+  Water: "Water",
 };
 
-const CATEGORY_ORDER = ["Police", "Fire", "Ambulance", "Electricity"];
+const CATEGORY_ORDER = ["Police", "Fire", "Ambulance", "Electricity", "Water"];
 
 function renderGrouped(panel, items) {
   const groups = new Map();
