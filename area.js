@@ -51,28 +51,26 @@ function slugifyArea(name) {
 }
 
 function loadAreaBanner(area) {
-  const wrapper = document.getElementById("area-banner");
-  const img = document.getElementById("area-banner-img");
-  if (!wrapper || !img || !area) return;
+  const hero = document.getElementById("area-hero");
+  if (!hero || !area) return;
 
   const slug = slugifyArea(area);
   const extensions = ["jpg", "jpeg", "png", "webp"];
   let i = 0;
 
-  img.alt = `${area} banner`;
-  img.onload = () => {
-    wrapper.hidden = false;
-  };
-  img.onerror = () => {
-    if (i < extensions.length) {
-      img.src = `areas/banners/${slug}.${extensions[i]}`;
-      i++;
-    } else {
-      wrapper.hidden = true;
-    }
-  };
-  img.src = `areas/banners/${slug}.${extensions[i]}`;
-  i++;
+  function tryNext() {
+    if (i >= extensions.length) return; // fall back to the CSS default banner
+    const url = `areas/banners/${slug}.${extensions[i]}`;
+    i++;
+    const probe = new Image();
+    probe.onload = () => {
+      hero.style.backgroundImage = `linear-gradient(180deg, rgba(10, 36, 56, 0.45) 0%, rgba(10, 36, 56, 0.75) 100%), url("${url}")`;
+    };
+    probe.onerror = tryNext;
+    probe.src = url;
+  }
+
+  tryNext();
 }
 
 async function fetchListings(baseDir) {
