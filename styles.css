@@ -154,30 +154,11 @@ h2.section-title {
   pointer-events: none;
 }
 
-button.toggle-card {
-  width: 100%;
-  font: inherit;
-  background: var(--surface);
-  cursor: pointer;
-}
-
-.toggle-card .card-arrow {
-  transition: transform 0.15s ease;
-}
-
-.toggle-card[aria-expanded="true"] .card-arrow {
-  transform: rotate(90deg);
-}
-
 .panel {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: -2px;
-}
-
-.panel[hidden] {
-  display: none;
 }
 
 .list-item {
