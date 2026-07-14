@@ -37,3 +37,12 @@ Hoek`) so it shows up when browsing [Areas](../areas.html).
 3. Fill in the details and remove any fields you don't need.
 4. Add the file name (without `.json`) to [`listings/index.json`](./listings/index.json).
 5. Open a pull request.
+
+## Logos
+
+A business can have its own logo shown in place of the generic Valley
+Community icon on its detail page (`business.html?id=...`). Add an image to
+[`logos/`](./logos) named after the listing's file name — e.g.
+`listings/sandis-bistro.json` → `logos/sandis-bistro.jpg` (`.png`/`.webp`
+also work). Overwriting that file replaces the logo, no code changes needed.
+Businesses without a logo just show the default icon.

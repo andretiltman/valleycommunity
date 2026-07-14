@@ -70,6 +70,29 @@ function renderQrCode(url) {
   section.hidden = false;
 }
 
+function loadBusinessLogo(id, name) {
+  const icon = document.getElementById("business-hero-icon");
+  if (!icon || !id) return;
+
+  const extensions = ["jpg", "jpeg", "png", "webp"];
+  let i = 0;
+
+  function tryNext() {
+    if (i >= extensions.length) return; // fall back to the default Valley Community icon
+    const url = `businesses/logos/${id}.${extensions[i]}`;
+    i++;
+    const probe = new Image();
+    probe.onload = () => {
+      icon.src = url;
+      icon.alt = `${name} logo`;
+    };
+    probe.onerror = tryNext;
+    probe.src = url;
+  }
+
+  tryNext();
+}
+
 async function loadBusiness() {
   const id = new URLSearchParams(window.location.search).get("id");
   const title = document.getElementById("business-title");
@@ -95,6 +118,7 @@ async function loadBusiness() {
     panel.innerHTML = "";
     panel.appendChild(renderBusiness(item));
     renderQrCode(window.location.href);
+    loadBusinessLogo(id, item.name);
   } catch (err) {
     panel.innerHTML = '<p class="list-status">Couldn’t load this business. Try again later.</p>';
   }
