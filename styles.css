@@ -51,7 +51,8 @@ body {
 
 header.hero {
   width: 100%;
-  background: linear-gradient(180deg, var(--brand) 0%, #0a2438 100%);
+  background: linear-gradient(180deg, rgba(10, 36, 56, 0.45) 0%, rgba(10, 36, 56, 0.75) 100%),
+    url("areas/banners/default.jpg") center/cover no-repeat;
   color: #fdf8ee;
   padding: 48px 20px 32px;
   display: flex;
