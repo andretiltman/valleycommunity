@@ -47,6 +47,11 @@ function renderBusiness(item) {
         ? `<p><a href="area.html?name=${encodeURIComponent(item.area)}">${escapeHtml(item.area)}</a></p>`
         : ""
     }
+    ${
+      item.shoppingCenter
+        ? `<p><a href="businesses.html?shoppingCenter=${encodeURIComponent(item.shoppingCenter)}">${escapeHtml(item.shoppingCenter)}</a></p>`
+        : ""
+    }
     ${item.hours ? `<p>${escapeHtml(item.hours)}</p>` : ""}
     ${links.length ? `<p>${links.join(" &middot; ")}</p>` : ""}
     ${
