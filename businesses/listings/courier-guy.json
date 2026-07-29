@@ -1,0 +1,11 @@
+{
+  "name": "Courier Guy",
+  "category": "Courier Service",
+  "description": "Courier and parcel delivery service in Fish Hoek Town Square.",
+  "contact": {
+    "phone": "+27 66 399 8835"
+  },
+  "address": "61 Main Road, Fish Hoek, Cape Town",
+  "area": "Fish Hoek",
+  "shoppingCenter": "Fish Hoek Town Square"
+}
