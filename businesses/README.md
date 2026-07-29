@@ -19,6 +19,7 @@ the business (lowercase, hyphen-separated), e.g. `listings/green-valley-bakery.j
   },
   "address": "Street, area",
   "area": "e.g. Fish Hoek",
+  "shoppingCenter": "e.g. Valyland Centre",
   "mapLink": "https://maps.app.goo.gl/optional-google-maps-link",
   "website": "https://optional-website.example.com",
   "hours": "Mon-Fri 08:00-17:00",
@@ -28,7 +29,10 @@ the business (lowercase, hyphen-separated), e.g. `listings/green-valley-bakery.j
 
 Only `name`, `category` and `description` are required — omit any field that
 doesn't apply. Set `area` to the suburb/area the business is in (e.g. `Fish
-Hoek`) so it shows up when browsing [Areas](../areas.html).
+Hoek`) so it shows up when browsing [Areas](../areas.html). Set
+`shoppingCenter` to the name of the shopping center/mall the business is
+inside (e.g. `Valyland Centre`) so it shows up when browsing
+[Shopping Centers](../shopping-centers.html).
 
 ## Adding a listing
 

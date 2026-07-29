@@ -39,6 +39,7 @@ function renderBusinessSummary(item) {
     <span class="category">${escapeHtml(item.category || "")}</span>
     ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
     ${item.address ? `<p>${escapeHtml(item.address)}</p>` : ""}
+    ${item.shoppingCenter ? `<p>${escapeHtml(item.shoppingCenter)}</p>` : ""}
   `;
   return el;
 }
@@ -49,9 +50,12 @@ async function loadBusinesses() {
   const params = new URLSearchParams(window.location.search);
   const areaFilter = params.get("area");
   const categoryFilter = params.get("category");
+  const shoppingCenterFilter = params.get("shoppingCenter");
 
   if (heading) {
-    if (categoryFilter && areaFilter) {
+    if (shoppingCenterFilter) {
+      heading.textContent = shoppingCenterFilter;
+    } else if (categoryFilter && areaFilter) {
       heading.textContent = `${categoryFilter} in ${areaFilter}`;
     } else if (categoryFilter) {
       heading.textContent = categoryFilter;
@@ -78,12 +82,20 @@ async function loadBusinesses() {
         (item) => item.category && item.category.toLowerCase() === categoryFilter.toLowerCase()
       );
     }
+    if (shoppingCenterFilter) {
+      filtered = filtered.filter(
+        (item) =>
+          item.shoppingCenter && item.shoppingCenter.toLowerCase() === shoppingCenterFilter.toLowerCase()
+      );
+    }
 
     const sorted = filtered.slice().sort((a, b) => a.name.localeCompare(b.name));
 
     if (!sorted.length) {
-      panel.innerHTML = areaFilter || categoryFilter
-        ? `<p class="list-status">No businesses listed yet for ${escapeHtml(categoryFilter || areaFilter)}.</p>`
+      panel.innerHTML = areaFilter || categoryFilter || shoppingCenterFilter
+        ? `<p class="list-status">No businesses listed yet for ${escapeHtml(
+            categoryFilter || shoppingCenterFilter || areaFilter
+          )}.</p>`
         : '<p class="list-status">No businesses listed yet.</p>';
     } else {
       sorted.forEach((item) => panel.appendChild(renderBusinessSummary(item)));
