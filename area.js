@@ -16,7 +16,7 @@ function escapeHtml(value) {
 
 function renderBusinessSummary(item) {
   const el = document.createElement("a");
-  el.className = "list-item";
+  el.className = item.featured ? "list-item featured" : "list-item";
   el.href = `business.html?id=${encodeURIComponent(item._id)}`;
 
   el.innerHTML = `
