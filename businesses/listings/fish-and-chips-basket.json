@@ -1,0 +1,11 @@
+{
+  "name": "Fish & Chips Basket",
+  "category": "Food",
+  "description": "Fish and chips takeaway in Fish Hoek Town Square.",
+  "contact": {
+    "phone": "+27 61 399 5540"
+  },
+  "address": "61 Main Road, Fish Hoek, Cape Town",
+  "area": "Fish Hoek",
+  "shoppingCenter": "Fish Hoek Town Square"
+}

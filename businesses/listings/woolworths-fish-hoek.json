@@ -1,0 +1,11 @@
+{
+  "name": "Woolworths",
+  "category": "Supermarket",
+  "description": "Woolworths Food supermarket, an anchor tenant of Fish Hoek Town Square.",
+  "contact": {
+    "phone": "+27 21 784 3060"
+  },
+  "address": "61 Main Road, Fish Hoek, Cape Town",
+  "area": "Fish Hoek",
+  "shoppingCenter": "Fish Hoek Town Square"
+}
