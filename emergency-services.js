@@ -28,16 +28,29 @@ async function fetchEmergencyContacts() {
   );
 }
 
+const CATEGORY_ICONS = {
+  Police: "👮",
+  Fire: "🚒",
+  Ambulance: "🚑",
+  Electricity: "⚡",
+  Water: "💧",
+};
+
 function renderEmergencyContact(item) {
   const el = document.createElement("div");
-  el.className = "list-item";
+  el.className = "list-item list-item-icon";
+
+  const icon = CATEGORY_ICONS[item.category] || "📞";
 
   el.innerHTML = `
-    <strong>${escapeHtml(item.name)}</strong>
-    <span class="category">${escapeHtml(item.category || "")}</span>
-    ${item.phone ? `<p><a href="tel:${escapeHtml(item.phone.replace(/\s+/g, ""))}">${escapeHtml(item.phone)}</a></p>` : ""}
-    ${item.address ? `<p>${escapeHtml(item.address)}</p>` : ""}
-    ${item.mapLink ? `<p><a href="${escapeHtml(item.mapLink)}" target="_blank" rel="noopener">View map</a></p>` : ""}
+    <span class="list-icon">${icon}</span>
+    <span class="list-body">
+      <strong>${escapeHtml(item.name)}</strong>
+      <span class="category">${escapeHtml(item.category || "")}</span>
+      ${item.phone ? `<p><a href="tel:${escapeHtml(item.phone.replace(/\s+/g, ""))}">${escapeHtml(item.phone)}</a></p>` : ""}
+      ${item.address ? `<p>${escapeHtml(item.address)}</p>` : ""}
+      ${item.mapLink ? `<p><a href="${escapeHtml(item.mapLink)}" target="_blank" rel="noopener">View map</a></p>` : ""}
+    </span>
   `;
   return el;
 }
