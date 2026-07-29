@@ -31,8 +31,8 @@ Only `name`, `category` and `description` are required — omit any field that
 doesn't apply. Set `area` to the suburb/area the business is in (e.g. `Fish
 Hoek`) so it shows up when browsing [Areas](../areas.html). Set
 `shoppingCenter` to the name of the shopping center/mall the business is
-inside (e.g. `Valyland Centre`) so it shows up when browsing
-[Shopping Centers](../shopping-centers.html).
+inside (e.g. `Valyland Centre` or `Longbeach Mall`) so it shows up when
+browsing [Shopping Centers](../shopping-centers.html).
 
 ## Adding a listing
 
