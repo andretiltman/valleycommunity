@@ -199,7 +199,7 @@ h2.section-title {
 
 .list-item-icon {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 }
 
