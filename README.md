@@ -24,3 +24,9 @@ folder's README for the listing format and how to add one. Listings with an
 Emergency services contacts (police, fire, medical, etc.) live under
 [`emergency-services/`](./emergency-services) — see that folder's README for
 the entry format and how to add one.
+
+## Music
+
+Local artists and venues live under [`music/`](./music) and are browsable on
+the [Music](./music.html) page — see that folder's README for the entry
+format and how to add one.
