@@ -40,7 +40,7 @@ function renderEmergencyContact(item) {
   const el = document.createElement("div");
   el.className = "list-item list-item-icon";
 
-  const icon = CATEGORY_ICONS[item.category] || "📞";
+  const icon = CATEGORY_ICONS[item.category] || "🆘️";
 
   el.innerHTML = `
     <span class="list-icon">${icon}</span>
