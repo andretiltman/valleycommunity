@@ -29,10 +29,6 @@ async function fetchBusinesses() {
   );
 }
 
-const CATEGORY_ICONS = {
-  "Pet Shop": "🐶",
-};
-const DEFAULT_CATEGORY_ICON = "🏢";
 const LOGO_EXTENSIONS = ["jpg", "jpeg", "png", "webp"];
 
 function findBusinessLogo(id) {
