@@ -1,0 +1,13 @@
+{
+  "name": "Clicks",
+  "category": "Health",
+  "description": "Pharmacy and health store in Longbeach Mall, Noordhoek.",
+  "contact": {
+    "phone": "+27 21 785 4117"
+  },
+  "address": "Shop G15, Longbeach Mall, Sunnydale Rd, Noordhoek",
+  "area": "Noordhoek",
+  "shoppingCenter": "Longbeach Mall",
+  "mapLink": "https://www.google.com/maps/place/Longbeach+Mall/@-34.1241848,18.3798153,16z/data=!4m14!1m7!3m6!1s0x1dcc6afb22656ea7:0x192de08b37136537!2sLongbeach+Mall!8m2!3d-34.124004!4d18.3881538!16s%2Fg%2F11bvt3bc8v!3m5!1s0x1dcc6afb22656ea7:0x192de08b37136537!8m2!3d-34.124004!4d18.3881538!16s%2Fg%2F11bvt3bc8v?entry=ttu",
+  "hours": "Mon-Fri 09:00-18:00 · Sat 08:30-17:00 · Sun 09:00-14:00"
+}
