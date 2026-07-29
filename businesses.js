@@ -31,7 +31,7 @@ async function fetchBusinesses() {
 
 function renderBusinessSummary(item) {
   const el = document.createElement("a");
-  el.className = "list-item";
+  el.className = item.featured ? "list-item featured" : "list-item";
   el.href = `business.html?id=${encodeURIComponent(item._id)}`;
 
   el.innerHTML = `
@@ -105,7 +105,13 @@ async function loadBusinesses() {
       );
     }
 
-    const baseline = filtered.slice().sort((a, b) => a.name.localeCompare(b.name));
+    const baseline = filtered.slice().sort((a, b) => {
+      if (categoryFilter) {
+        const featuredDiff = (b.featured === true) - (a.featured === true);
+        if (featuredDiff !== 0) return featuredDiff;
+      }
+      return a.name.localeCompare(b.name);
+    });
 
     function render() {
       const query = searchInput ? searchInput.value.trim().toLowerCase() : "";

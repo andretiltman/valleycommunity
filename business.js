@@ -16,7 +16,7 @@ function escapeHtml(value) {
 
 function renderBusiness(item) {
   const el = document.createElement("div");
-  el.className = "list-item";
+  el.className = item.featured ? "list-item featured" : "list-item";
 
   const links = [];
   if (item.contact?.phone) {

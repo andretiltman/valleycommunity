@@ -12,6 +12,7 @@ the business (lowercase, hyphen-separated), e.g. `listings/green-valley-bakery.j
   "name": "Business name",
   "category": "e.g. Bakery, Plumber, Spaza Shop",
   "description": "One or two sentences about the business.",
+  "featured": false,
   "contact": {
     "phone": "+27 00 000 0000",
     "whatsapp": "https://wa.me/27000000000",
@@ -33,6 +34,12 @@ Hoek`) so it shows up when browsing [Areas](../areas.html). Set
 `shoppingCenter` to the name of the shopping center/mall the business is
 inside (e.g. `Valyland Centre` or `Longbeach Mall`) so it shows up when
 browsing [Shopping Centers](../shopping-centers.html).
+
+Set `featured` to `true` to showcase a business: it gets a green outline
+everywhere it's listed, and appears first (ahead of the alphabetical order)
+when browsing the [category](../categories.html) it belongs to. Featured
+businesses stay in alphabetical order everywhere else — the business
+directory, areas, and shopping centers.
 
 ## Adding a listing
 

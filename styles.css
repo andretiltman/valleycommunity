@@ -193,6 +193,16 @@ h2.section-title {
   text-decoration: none;
 }
 
+.list-item.featured {
+  border-color: #2e9e4f;
+}
+
+@media (prefers-color-scheme: dark) {
+  .list-item.featured {
+    border-color: #4fce74;
+  }
+}
+
 a.list-item:active {
   transform: scale(0.98);
 }
