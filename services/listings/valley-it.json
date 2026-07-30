@@ -1,0 +1,12 @@
+{
+  "name": "Valley I.T",
+  "category": "IT Support",
+  "description": "Computer and IT support for homes and small businesses in the Valley.",
+  "featured": false,
+  "contact": {
+    "phone": "079 973 9344",
+    "whatsapp": "https://wa.me/27799739344",
+    "email": "vtechsecurecc@gmail.com"
+  },
+  "tags": ["it support", "computer repairs"]
+}

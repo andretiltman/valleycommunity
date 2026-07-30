@@ -1,0 +1,118 @@
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[char]);
+}
+
+function renderService(item) {
+  const el = document.createElement("div");
+  el.className = item.featured ? "list-item featured" : "list-item";
+
+  const links = [];
+  if (item.contact?.phone) {
+    links.push(
+      `<a href="tel:${escapeHtml(item.contact.phone.replace(/\s+/g, ""))}">${escapeHtml(item.contact.phone)}</a>`
+    );
+  }
+  if (item.contact?.whatsapp) {
+    links.push(`<a href="${escapeHtml(item.contact.whatsapp)}" target="_blank" rel="noopener">WhatsApp</a>`);
+  }
+  if (item.contact?.email) {
+    links.push(`<a href="mailto:${escapeHtml(item.contact.email)}">Email</a>`);
+  }
+  if (item.website) {
+    links.push(`<a href="${escapeHtml(item.website)}" target="_blank" rel="noopener">Website</a>`);
+  }
+
+  el.innerHTML = `
+    <strong>${escapeHtml(item.name)}</strong>
+    <span class="category">${escapeHtml(item.category || "")}</span>
+    ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
+    ${item.hours ? `<p>${escapeHtml(item.hours)}</p>` : ""}
+    ${links.length ? `<p>${links.join(" &middot; ")}</p>` : ""}
+    ${
+      Array.isArray(item.tags) && item.tags.length
+        ? `<p>${item.tags.map((tag) => escapeHtml(tag)).join(" &middot; ")}</p>`
+        : ""
+    }
+  `;
+  return el;
+}
+
+function renderQrCode(url) {
+  const section = document.getElementById("service-qr-section");
+  const container = document.getElementById("service-qr");
+  if (!section || !container || typeof qrcodegen === "undefined") return;
+
+  const qr = qrcodegen.QrCode.encodeText(url, qrcodegen.QrCode.Ecc.MEDIUM);
+  const svg = qr.toSvgString(4).replace(/^[\s\S]*?(<svg)/, "$1");
+
+  container.innerHTML = svg;
+  section.hidden = false;
+}
+
+function loadServiceLogo(id, name) {
+  const icon = document.getElementById("service-hero-icon");
+  if (!icon || !id) return;
+
+  const extensions = ["jpg", "jpeg", "png", "webp"];
+  let i = 0;
+
+  function tryNext() {
+    if (i >= extensions.length) return; // fall back to the default Valley Community icon
+    const url = `services/logos/${id}.${extensions[i]}`;
+    i++;
+    const probe = new Image();
+    probe.onload = () => {
+      icon.src = url;
+      icon.alt = `${name} logo`;
+    };
+    probe.onerror = tryNext;
+    probe.src = url;
+  }
+
+  tryNext();
+}
+
+async function loadService() {
+  const id = new URLSearchParams(window.location.search).get("id");
+  const title = document.getElementById("service-title");
+  const subtitle = document.getElementById("service-subtitle");
+  const panel = document.getElementById("service-panel");
+
+  panel.innerHTML = '<p class="list-status">Loading&hellip;</p>';
+
+  if (!id) {
+    panel.innerHTML = '<p class="list-status">No service specified.</p>';
+    return;
+  }
+
+  try {
+    const response = await fetch(`services/listings/${id}.json`);
+    if (!response.ok) throw new Error("service fetch failed");
+    const item = await response.json();
+
+    if (title) title.textContent = item.name;
+    if (subtitle) subtitle.textContent = item.category || "Service details";
+    document.title = `${item.name} · Valley Community`;
+
+    panel.innerHTML = "";
+    panel.appendChild(renderService(item));
+    renderQrCode(window.location.href);
+    loadServiceLogo(id, item.name);
+  } catch (err) {
+    panel.innerHTML = '<p class="list-status">Couldn’t load this service. Try again later.</p>';
+  }
+}
+
+loadService();

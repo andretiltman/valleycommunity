@@ -19,6 +19,13 @@ Local business listings live under [`businesses/`](./businesses) — see that
 folder's README for the listing format and how to add one. Listings with an
 `area` set can also be browsed by area on the [Areas](./areas.html) page.
 
+## Service Providers
+
+Plumbers, handymen and other tradespeople without a fixed premises live
+under [`services/`](./services) and are browsable on the
+[Services](./services.html) page — see that folder's README for the entry
+format and how to add one.
+
 ## Emergency Services
 
 Emergency services contacts (police, fire, medical, etc.) live under
