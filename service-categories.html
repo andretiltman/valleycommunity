@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Service Providers · Valley Community</title>
-  <meta name="description" content="Plumbers, handymen and other service providers for the Valley Community." />
+  <title>Service Categories · Valley Community</title>
+  <meta name="description" content="Browse Valley Community service providers by category." />
 
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#0f3a5c" />
@@ -23,34 +23,27 @@
 <body>
   <header class="hero">
     <a class="hero-icon" href="index.html"><img src="icons/icon-192.png" alt="Valley Community" /></a>
-    <h1>Service Providers</h1>
-    <p>Plumbers, handymen &amp; other services for the Valley</p>
+    <h1>Service Categories</h1>
+    <p>Browse service providers by category</p>
   </header>
 
   <div class="wrap">
     <section>
-      <a class="card" href="index.html">
+      <a class="card" href="services.html">
         <span class="card-icon">⬅️</span>
         <span class="card-body">
-          <strong>Back to home</strong>
+          <strong>Back to services</strong>
         </span>
       </a>
     </section>
 
     <section>
-      <h2 class="section-title" id="services-heading">Services</h2>
-      <input
-        type="search"
-        id="services-search"
-        class="search-input"
-        placeholder="Search services…"
-        aria-label="Search services"
-      />
-      <div class="panel" id="services-panel"></div>
+      <h2 class="section-title">Categories</h2>
+      <div class="panel" id="service-categories-panel"></div>
     </section>
   </div>
 
   <script src="service-category-icons.js"></script>
-  <script src="services.js"></script>
+  <script src="service-categories.js"></script>
 </body>
 </html>

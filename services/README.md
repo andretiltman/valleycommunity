@@ -52,5 +52,5 @@ listing's file name — e.g. `listings/valley-it.json` → `logos/valley-it.jpg`
 (`.png`/`.webp` also work).
 
 Services without a logo show an icon representing their `category` instead
-(see `CATEGORY_ICONS` in `service-categories.js`), falling back to 🧰 for
-categories without a specific icon.
+(see `SERVICE_CATEGORY_ICONS` in `service-category-icons.js`), falling back
+to 🧰 for categories without a specific icon.
