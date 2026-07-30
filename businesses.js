@@ -29,18 +29,48 @@ async function fetchBusinesses() {
   );
 }
 
+const LOGO_EXTENSIONS = ["jpg", "jpeg", "png", "webp"];
+
+function findBusinessLogo(id) {
+  return new Promise((resolve) => {
+    let i = 0;
+    function tryNext() {
+      if (i >= LOGO_EXTENSIONS.length) return resolve(null);
+      const url = `businesses/logos/${id}.${LOGO_EXTENSIONS[i]}`;
+      i++;
+      const probe = new Image();
+      probe.onload = () => resolve(url);
+      probe.onerror = tryNext;
+      probe.src = url;
+    }
+    tryNext();
+  });
+}
+
 function renderBusinessSummary(item) {
   const el = document.createElement("a");
-  el.className = item.featured ? "list-item featured" : "list-item";
+  el.className = item.featured ? "list-item list-item-icon featured" : "list-item list-item-icon";
   el.href = `business.html?id=${encodeURIComponent(item._id)}`;
 
+  const icon = CATEGORY_ICONS[item.category] || DEFAULT_CATEGORY_ICON;
+
   el.innerHTML = `
-    <strong>${escapeHtml(item.name)}</strong>
-    <span class="category">${escapeHtml(item.category || "")}</span>
-    ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
-    ${item.address ? `<p>${escapeHtml(item.address)}</p>` : ""}
-    ${item.shoppingCenter ? `<p>${escapeHtml(item.shoppingCenter)}</p>` : ""}
+    <span class="list-icon">${icon}</span>
+    <span class="list-body">
+      <strong>${escapeHtml(item.name)}</strong>
+      <span class="category">${escapeHtml(item.category || "")}</span>
+      ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
+      ${item.address ? `<p>${escapeHtml(item.address)}</p>` : ""}
+      ${item.shoppingCenter ? `<p>${escapeHtml(item.shoppingCenter)}</p>` : ""}
+    </span>
   `;
+
+  findBusinessLogo(item._id).then((url) => {
+    if (!url) return;
+    const iconEl = el.querySelector(".list-icon");
+    if (iconEl) iconEl.innerHTML = `<img src="${escapeHtml(url)}" alt="" />`;
+  });
+
   return el;
 }
 

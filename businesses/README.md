@@ -56,4 +56,8 @@ Community icon on its detail page (`business.html?id=...`). Add an image to
 [`logos/`](./logos) named after the listing's file name — e.g.
 `listings/sandis-bistro.json` → `logos/sandis-bistro.jpg` (`.png`/`.webp`
 also work). Overwriting that file replaces the logo, no code changes needed.
-Businesses without a logo just show the default icon.
+
+In the business directory, area pages, and other listings, businesses
+without a logo show an icon representing their `category` instead (see
+`CATEGORY_ICONS` in `businesses.js`/`area.js`), falling back to 🏢 for
+categories without a specific icon.
