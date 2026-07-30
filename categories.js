@@ -19,8 +19,10 @@ function renderCategory(category, count) {
   el.className = "card";
   el.href = `businesses.html?category=${encodeURIComponent(category)}`;
 
+  const icon = CATEGORY_ICONS[category] || DEFAULT_CATEGORY_ICON;
+
   el.innerHTML = `
-    <span class="card-icon">🏷️</span>
+    <span class="card-icon">${icon}</span>
     <span class="card-body">
       <strong>${escapeHtml(category)}</strong>
       <span>${count} business${count === 1 ? "" : "es"}</span>
