@@ -53,7 +53,14 @@ function renderArtist(item) {
 
   const links = contactLinks(item);
   if (item.socials) {
-    const labels = { instagram: "Instagram", facebook: "Facebook", youtube: "YouTube", spotify: "Spotify" };
+    const labels = {
+      instagram: "Instagram",
+      facebook: "Facebook",
+      youtube: "YouTube",
+      spotify: "Spotify",
+      soundcloud: "SoundCloud",
+      bandcamp: "Bandcamp",
+    };
     Object.keys(labels).forEach((key) => {
       if (item.socials[key]) {
         links.push(`<a href="${escapeHtml(item.socials[key])}" target="_blank" rel="noopener">${labels[key]}</a>`);

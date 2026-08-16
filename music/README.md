@@ -27,7 +27,9 @@ Each entry is a single JSON file, named after the artist or venue
     "instagram": "https://instagram.com/optional",
     "facebook": "https://facebook.com/optional",
     "youtube": "https://youtube.com/optional",
-    "spotify": "https://open.spotify.com/optional"
+    "spotify": "https://open.spotify.com/optional",
+    "soundcloud": "https://soundcloud.com/optional",
+    "bandcamp": "https://optional.bandcamp.com"
   }
 }
 ```
