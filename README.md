@@ -1,5 +1,10 @@
-# valleycommunity
-Open Repo for the Valley Community
+# Valley Community
+
+The Valley is a group of small coastal towns situated on the southernmost
+tip of South Africa. This is the open repo behind the community's website
+and WhatsApp groups.
+
+Repo: https://github.com/valleycommunity/valleycommunity
 
 ## Groups
 
@@ -12,6 +17,8 @@ Open Repo for the Valley Community
 `index.html` is an installable PWA (manifest + service worker) meant to be served
 with GitHub Pages: Settings → Pages → deploy from the `main` branch, root folder.
 Once enabled, visitors can "Add to Home Screen" on mobile to install it like an app.
+
+Live site: https://valleycommunity.github.io/valleycommunity/
 
 ## Business Listings
 
