@@ -60,6 +60,7 @@ function renderArtist(item) {
       spotify: "Spotify",
       soundcloud: "SoundCloud",
       bandcamp: "Bandcamp",
+      applemusic: "Apple Music",
     };
     Object.keys(labels).forEach((key) => {
       if (item.socials[key]) {
