@@ -20,6 +20,29 @@ Once enabled, visitors can "Add to Home Screen" on mobile to install it like an 
 
 Live site: https://valleycommunity.github.io/valleycommunity/
 
+## Adding a Listing
+
+Every listing on the site — businesses, services, emergency services, music
+artists/venues — is added by submitting a pull request. There's no
+membership or login: anyone can propose a listing, and a maintainer reviews
+and merges it before it goes live. You can do the whole thing from a browser,
+no git install or local setup required:
+
+1. Pick the section that matches what you're adding (Business, Service
+   Provider, Emergency Service, or Music — see below) and open its
+   `README.md` for the exact entry format and required fields.
+2. In that section's listings folder, use GitHub's **Add file → Create new
+   file** button, type the new file's path (e.g.
+   `businesses/listings/green-valley-bakery.json`), and paste in the filled-out
+   JSON based on that folder's `_template.json`.
+3. Open that folder's `index.json`, click the pencil (✏️) icon to edit it, and
+   add your new file's name (without the `.json` extension) to the list.
+4. For both changes, when GitHub asks how to commit, choose "Create a new
+   branch for this commit and start a pull request", then open the pull
+   request.
+5. A maintainer reviews and merges the pull request — once merged, the
+   listing appears on the live site automatically.
+
 ## Business Listings
 
 Local business listings live under [`businesses/`](./businesses) — see that
